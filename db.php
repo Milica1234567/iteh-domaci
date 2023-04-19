@@ -68,7 +68,6 @@
         }
     }
 
-    $ob = new Database();
-    echo $ob->totalRowCount();
+
     
 ?>

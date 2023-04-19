@@ -56,36 +56,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive" id="showPatient">
-                <table class="table table-striped table-sm table-bordered">
-                    <thead>
-                        <tr class="text-center">
-                            <th>ID</th>
-                            <th>Ime</th>
-                            <th>Ime roditelja</th>
-                            <th>Prezime</th>
-                            <th>Broj telefona</th>
-                            <th>JMBG</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php for($i=1;$i<100;$i++): ?>
-                        <tr class="text-center text-secondary">
-                            <td><?= $i ?></td>
-                            <td>user1</td>
-                            <td>user1</td>
-                            <td>user1</td>
-                            <td>brtelefona1</td>
-                            <td>jmbg1</td>
-                            <td>
-                                <a href="#" title="Detalji" class="text-success"><i class="fas fa-info-circle fa-lg"></i></a>&nbsp;&nbsp;
-                                <a href="#" title="Edit" class="text-primary"><i class="fas fa-edit fa-lg"></i></a>&nbsp;&nbsp;
-                                <a href="#" title="Delete" class="text-danger"><i class="fas fa-trash-alt fa-lg"></i></a>
-                            </td>
-                        </tr>
-                        <?php endfor; ?>
-                    </tbody>
-                </table>
+                
             </div>
         </div>
     </div>
@@ -131,7 +102,7 @@
 
 
 <!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <!-- Popper JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -150,7 +121,35 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $("table").DataTable();
+        
+
+        showAllPatients();
+        
+        function showAllPatients(){
+            $.ajax({
+                url: "action.php",
+                type: "POST",
+                data: {action:"view"},
+                success:function(response){
+                    //console.log(response);
+                    $("#showPatient").html(response);
+                    $("table").DataTable({
+                        order: [0, 'desc']
+                    });
+                }
+            });
+        }
+
+        $("#insert").click(function(e){
+            if($("#form-data")[0].checkValidity()){
+                e.preventDefault();
+                $.ajax({
+                    url: "action.php",
+                    type: "POST", 
+                    data: $()
+                });
+            }
+        })
     });
 </script>
 </body>
