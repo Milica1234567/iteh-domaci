@@ -37,7 +37,7 @@
         }
 
         public function getPatientById($id){
-            $sql = "SELECT FROM patients WHERE id = :id";
+            $sql = "SELECT * FROM patients WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(['id'=>$id]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);

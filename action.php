@@ -32,9 +32,11 @@
                 <td>'.$row['jmbg'].'</td>
                 <td>'.$row['doktor_id'].'</td>
                 <td>
-                    <a href="#" title="Detalji" class="text-success"><i class="fas fa-info-circle fa-lg"></i></a>&nbsp;&nbsp;
-                    <a href="#" title="Edit" class="text-primary"><i class="fas fa-edit fa-lg"></i></a>&nbsp;&nbsp;
-                    <a href="#" title="Delete" class="text-danger"><i class="fas fa-trash-alt fa-lg"></i></a>
+                    <a href="#" title="Detalji" class="text-success infoBtn" id="'.$row['id'].'"><i class="fas fa-info-circle fa-lg"></i></a>&nbsp;&nbsp;
+
+                    <a href="#" title="Edit" class="text-primary editBtn" data-toggle="modal" data-target="#editPatient" id="'.$row['id'].'"><i class="fas fa-edit fa-lg"></i></a>&nbsp;&nbsp;
+                    
+                    <a href="#" title="Delete" class="text-danger delBtn" id="'.$row['id'].'"><i class="fas fa-trash-alt fa-lg"></i></a>
                 </td></tr>';
 
             }
@@ -55,6 +57,31 @@
         $dr_id=$_POST['dr_id'];
 
         $db->insert($ime, $imeRod, $prezime, $brTelefona, $jmbg, $dr_id);
+    }
+
+    if(isset($_POST['edit_id'])){
+        $id = $_POST['edit_id'];
+
+        $row=$db->getPatientById($id);
+        echo json_encode($row);
+    }
+
+    if(isset($_POST['action']) && $_POST['action']=='update'){
+        $id = $_POST['id'];
+        $ime = $_POST['ime'];
+        $imeRod= $_POST['imeRod'];
+        $prezime=$_POST['prezime'];
+        $brTelefona=$_POST['brTelefona'];
+        $jmbg=$_POST['jmbg'];
+        $dr_id=$_POST['dr_id'];
+
+        $db->update($id, $ime, $imeRod, $prezime, $brTelefona, $jmbg, $dr_id);
+    }
+
+    if(isset($_POST['del_id'])){
+        $id=$_POST['del_id'];
+
+        $db->delete($id);
     }
     
 
