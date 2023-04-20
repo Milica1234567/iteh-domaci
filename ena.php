@@ -92,6 +92,9 @@
                 <input type="text" name="jmbg" class="form-control" placeholder="JMBG" required>
             </div>
             <div class="form-group">
+                <input type="text" name="dr_id" class="form-control" placeholder="DR" required>
+            </div>
+            <div class="form-group">
                 <input type="submit" name="insert" id="insert" value="Dodaj pacijenta" class="btn btn-success btn-block">
             </div>
           </form>
@@ -146,7 +149,16 @@
                 $.ajax({
                     url: "action.php",
                     type: "POST", 
-                    data: $()
+                    data: $("#form-data").serialize()+"&action=insert",
+                    success: function(response){
+                        Swal.fire({
+                            title: 'Pacijent uspesno dodat!',
+                            type: 'success'
+                        })
+                        $("#addPatient").modal('hide');
+                        $("#form-data")[0].reset();
+                        showAllPatients();
+                    }
                 });
             }
         })

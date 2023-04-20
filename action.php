@@ -45,6 +45,17 @@
             echo '<h3 class="text-center text-secondary mt-5>Nema pacijenata u bazi podataka</h3>';
         }
     }
+
+    if(isset($_POST['action']) && $_POST['action']=='insert'){
+        $ime = $_POST['ime'];
+        $imeRod= $_POST['imeRod'];
+        $prezime=$_POST['prezime'];
+        $brTelefona=$_POST['brTelefona'];
+        $jmbg=$_POST['jmbg'];
+        $dr_id=$_POST['dr_id'];
+
+        $db->insert($ime, $imeRod, $prezime, $brTelefona, $jmbg, $dr_id);
+    }
     
 
 ?>
