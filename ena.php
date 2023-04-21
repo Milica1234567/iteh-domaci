@@ -247,7 +247,7 @@
                 });
             }
         })
-        //delete
+//delete
         $("body").on("click", ".delBtn", function(e){
             e.preventDefault();
             var tr=$(this).closest('tr');
@@ -278,7 +278,24 @@
             }
     });
 });
-
+///detalji
+    $("body").on("click", ".infoBtn", function(e){
+        e.preventDefault();
+        info_id = $(this).attr('id');
+        $.ajax({
+            url:"action.php",
+            type:"POST",
+            data:{info_id:info_id},
+            success:function(response){
+                data=JSON.parse(response);
+                Swal.fire({
+                    title:'<strong>Patient Info: ID('+data.id+')</strong>',
+                    type: 'info',
+                    html: '<b>Ime: </b>'+data.ime+'<br><b>Ime roditelja: </b>'+data.ime_roditelja+'<br><b>Prezime: </b>'+data.prezime+'<br><b>Broj telefona: </b>'+data.br_telefona+'<br><b>JMBG: </b>'+data.jmbg+'<br><b>Doktor: </b>'+data.doktor_id
+                })
+            }
+        });
+    });
     });
 </script>
 </body>

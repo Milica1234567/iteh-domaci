@@ -83,6 +83,12 @@
 
         $db->delete($id);
     }
+
+    if(isset($_POST['info_id'])){
+        $id=$_POST['info_id'];
+        $row=$db->getPatientById($id);
+        echo json_encode($row);
+    }
     
 
 ?>
