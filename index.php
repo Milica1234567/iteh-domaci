@@ -13,7 +13,7 @@
 
 
 <body>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<nav class="navbar navbar-expand-md">
     <!-- Brand -->
     <a class="navbar-brand" href="#"><img src="./img/logo34.png" alt="" class="logo"></a>
 
@@ -32,12 +32,24 @@
             <a class="nav-link" href="login.php">dr Jelena Todic</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">dr Jovana Radenovic</a>
+            <a class="nav-link" href="login.php">dr Jovana Radenovic</a>
         </li>
         </ul>
     </div>
 </nav>
 
+<div class="obavestenje">
+    <div class="nas"><h2 class="naslov">Zakazan termin</h2></div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium laborum sint, nam maiores vel provident eligendi saepe fuga sapiente unde minima aspernatur porro fugit tempora, quos in blanditiis non tenetur?</p>
+</div>
+<div class="obavestenje">
+    <div class="nas"><h2 class="naslov">Prepisana terapija</h2></div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium laborum sint, nam maiores vel provident eligendi saepe fuga sapiente unde minima aspernatur porro fugit tempora, quos in blanditiis non tenetur?</p>
+</div>
+<div class="obavestenje">
+    <div class="nas"><h2 class="naslov">Novi pacijent</h2></div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium laborum sint, nam maiores vel provident eligendi saepe fuga sapiente unde minima aspernatur porro fugit tempora, quos in blanditiis non tenetur?</p>
+</div>
 
 
 

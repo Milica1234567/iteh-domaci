@@ -1,15 +1,19 @@
 <?php
+
     require_once 'db.php';
     $db = new Database();
+    
 
     session_start();
 
     if(isset($_POST['action']) && $_POST['action'] == "view"){
         $output = '';
-        $data = $db->read($_SESSION['id_dr']);
+        $id_doktora=$_SESSION['id_dr'];
+         
+        $data = $db->readidjoin($id_doktora);
         
         if($db->totalRowCount()>0){
-            $output .= '<table class="table table-striped table-sm table-bordered">
+            $output .= '<table class="table">
             <thead>
                 <tr class="text-center">
                     <th>ID</th>
@@ -31,7 +35,7 @@
                 <td>'.$row['prezime'].'</td>
                 <td>'.$row['br_telefona'].'</td>
                 <td>'.$row['jmbg'].'</td>
-                <td>'.$row['doktor_id'].'</td>
+                <td>'.$row['ime_doktora']. ' '. $row['prezime_doktora'].'</td>
                 <td>
                     <a href="#" title="Detalji" class="text-success infoBtn" id="'.$row['id'].'"><i class="fas fa-info-circle fa-lg"></i></a>&nbsp;&nbsp;
 

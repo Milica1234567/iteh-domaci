@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['ime_doktora'])){
+    header('location:login.php');
+}
+$id_doktora=$_SESSION['id_dr'];
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +19,7 @@ session_start();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<nav class="navbar navbar-expand-md ">
     <!-- Brand -->
     <a class="navbar-brand" href="#"><img src="./img/logo34.png" alt="" class="logo"></a>
 
@@ -34,7 +38,7 @@ session_start();
             <a class="nav-link" href="login.php">dr Jelena Todic</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">dr Jovana Radenovic</a>
+            <a class="nav-link" href="login.php">dr Jovana Radenovic</a>
         </li>
         </ul>
     </div>
@@ -49,21 +53,24 @@ session_start();
 
     <div class="row subtitle">
         <div class="col-lg-6 subtitle">
-            <h4 class=>Pacijenti doktorke: <?php echo $_SESSION['ime_doktora']; ?></h4>
+            <h4>Pacijenti doktorke: <?php echo $_SESSION['ime_doktora']; ?></h4>
+            <h5 id="id_doktora">ID doktora: <?php echo $id_doktora; ?></h5>
         </div>
         <div class="col-lg-6 btns">
             <button type="button" class="btn btn-primary m-1 float-right" data-toggle="modal" data-target="#addPatient"><i class="fas fa-user-plus"></i> Dodaj novog pacijenta</button>
-            <a class="logout" href="logout.php">LOGOUT</a>
+            
         </div>
+        
     </div>
     <hr class="my-1">
     <div class="row">
         <div class="col-lg-12">
-            <div class="table-responsive" id="showPatient">
+            <div class="table-responsive tabela" id="showPatient">
                 
             </div>
         </div>
     </div>
+    <div class="logoutDiv"><button class="logoutBtn"><a class="logout" href="logout.php">LOGOUT</a></button></div>
 </div>
 
  <!-- Nov pacijent -->
@@ -102,9 +109,12 @@ session_start();
                 <input type="submit" name="insert" id="insert" value="Dodaj pacijenta" class="btn btn-success btn-block">
             </div>
           </form>
+          
         </div>
       </div>
+       
     </div>
+   
   </div>
 
 
@@ -178,10 +188,16 @@ session_start();
         showAllPatients();
         
         function showAllPatients(){
+            var id_doktora=$("#id_doktora").val();
+            var data={
+                id_doktora:id_doktora,
+                action:"view"
+            }
             $.ajax({
                 url: "action.php",
                 type: "POST",
-                data: {action:"view"},
+                data: data,
+                //data: data,
                 success:function(response){
                     //console.log(response);
                     $("#showPatient").html(response);
@@ -192,6 +208,29 @@ session_start();
             });
         }
 //insert
+/* $(document).ready(function(){
+        
+
+        showAllPatients();
+        
+        function showAllPatients(){
+            var data={
+                id_doktora:$id_doktora,
+                action:"view"
+            }
+            $.ajax({
+                url: "action.php",
+                type: "POST",
+                data: data,
+                success:function(response){
+                    //console.log(response);
+                    $("#showPatient").html(response);
+                    $("table").DataTable({
+                        order: [0, 'desc']
+                    });
+                }
+            });
+        } */
         $("#insert").click(function(e){
             if($("#form-data")[0].checkValidity()){
                 e.preventDefault();
@@ -227,7 +266,7 @@ session_start();
                     $("#prezime").val(data.prezime);
                     $("#brTelefona").val(data.br_telefona);
                     $("#jmbg").val(data.jmbg);
-                    $("#dr_id").val(data.doktor_id);
+                    $("#dr_id").val(data.id_doktora);
                 }
             })
         });
@@ -295,7 +334,7 @@ session_start();
                 Swal.fire({
                     title:'<strong>Patient Info: ID('+data.id+')</strong>',
                     type: 'info',
-                    html: '<b>Ime: </b>'+data.ime+'<br><b>Ime roditelja: </b>'+data.ime_roditelja+'<br><b>Prezime: </b>'+data.prezime+'<br><b>Broj telefona: </b>'+data.br_telefona+'<br><b>JMBG: </b>'+data.jmbg+'<br><b>Doktor: </b>'+data.doktor_id
+                    html: '<b>Ime: </b>'+data.ime+'<br><b>Ime roditelja: </b>'+data.ime_roditelja+'<br><b>Prezime: </b>'+data.prezime+'<br><b>Broj telefona: </b>'+data.br_telefona+'<br><b>JMBG: </b>'+data.jmbg
                 })
             }
         });

@@ -1,19 +1,101 @@
 
 body{
-    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
-    url(img/post2.jpg);
+    background: url(img/post2.jpg);
     background-size: cover;
+    color: whitesmoke;
 }
 
 //navbar uradi
 .logo{
     width: 150px;
 }
-.title{
-    color: aqua;
+
+.navbar{
+    background: rgba(2, 48, 71, 1);
+    color: white;
+}
+.nav-link{
+    color: white;
 }
 
+//index
+.obavestenje{
+    background: rgba(2, 48, 71, 0.7);
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 40px;
+    border-radius: 12px;
+    padding: 5px;
+    padding-left: 12px;
+}
+.naslov{
+    text-align: center;
+}
+.naslov{
+    color:rgb(255, 183, 3);
+}
 
-.logout{
+//login
+.login-container{
+    width: 50%;
+    
+    
+    display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+}
+.login-box{
+    background: rgba(142, 202, 230, 0.4);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    width: 90%;
+}
+.login-row{
+    justify-content: center;
+    
+}
+
+.loginBtn{
+    background-color: rgb(33, 158, 188);
     color: white;
+    border-radius: 5px;
+    border: rgb(33, 158, 188);
+    margin: 6px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+//ena
+.container{
+    margin-top: 45px;
+    background: rgba(2, 48, 71, 0.7);
+    padding-top: 25px;
+    padding-left: 15px;
+    border-radius: 15px;
+    padding-bottom: 25px;
+}
+.table{
+    color: white;
+    border: 2px solid white;
+}
+td{
+    color: white;
+}
+.logoutDiv{
+    margin: 10px;
+    text-align: right;
+}
+.logoutBtn{
+    border-radius: 5px;
+    background-color: rgb(255, 183, 3);
+    padding: 5px;
+}
+.logoutBtn a{
+    color: white;
+    
 }

@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<nav class="navbar navbar-expand-md">
     <!-- Brand -->
     <a class="navbar-brand" href="#"><img src="./img/logo34.png" alt="" class="logo"></a>
 
@@ -29,14 +29,14 @@
             <a class="nav-link" href="login.php">dr Jelena Todic</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">dr Jovana Radenovic</a>
+            <a class="nav-link" href="login.php">dr Jovana Radenovic</a>
         </li>
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container login-container">
     <div class="login-box">
-    <div class="row">
+    <div class="row login-row">
         <div class="col-md-6 login">
             <h2>LOGIN</h2>
             <form action="validation.php" method="post">

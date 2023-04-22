@@ -17,7 +17,7 @@
         }
 
         public function insert($ime, $ime_roditelja, $prezime, $br_telefona, $jmbg, $dr_id){
-            $sql = "INSERT INTO patients (ime, ime_roditelja, prezime, br_telefona, jmbg, doktor_id) VALUES (:ime, :ime_roditelja, :prezime, :br_telefona, :jmbg, :dr_id)";
+            $sql = "INSERT INTO patients (ime, ime_roditelja, prezime, br_telefona, jmbg, id_doktora) VALUES (:ime, :ime_roditelja, :prezime, :br_telefona, :jmbg, :dr_id)";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(['ime'=>$ime,'ime_roditelja'=>$ime_roditelja,'prezime'=>$prezime,'br_telefona'=>$br_telefona,'jmbg'=>$jmbg,'dr_id'=>$dr_id]);
             return true;
@@ -35,6 +35,33 @@
             }
             return $data;
         }
+        public function readid($id_doktora){
+            
+            $data = array();
+            $sql = "SELECT * FROM patients where id_doktora=:id_doktora";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id_doktora'=>$id_doktora]);
+            //hvatanje u assoc niz
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $row){
+                $data[] = $row;
+            }
+            return $data;
+        }
+        public function readidjoin($id_doktora){
+            
+            $data = array();
+            $sql = "SELECT p.id, p.ime, p.ime_roditelja, p.prezime, p.br_telefona, p.jmbg, d.ime_doktora, d.prezime_doktora FROM patients AS p, doctors AS d where p.id_doktora=:id_doktora AND d.id=:id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id_doktora'=>$id_doktora, 'id'=>$id_doktora]);
+            //hvatanje u assoc niz
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $row){
+                $data[] = $row;
+            }
+            return $data;
+        }
+
 
         public function getPatientById($id){
             $sql = "SELECT * FROM patients WHERE id = :id";
@@ -46,7 +73,7 @@
 
         public function update($id, $ime, $ime_roditelja, $prezime, $br_telefona, $jmbg, $dr_id){
             $sql = "UPDATE patients SET ime = :ime, ime_roditelja = :ime_roditelja, prezime = :prezime, br_telefona = :br_telefona, jmbg = :jmbg, 
-            doktor_id = :dr_id WHERE id = :id";
+            id_doktora = :dr_id WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(['ime'=>$ime,'ime_roditelja'=>$ime_roditelja,'prezime'=>$prezime,'br_telefona'=>$br_telefona,'jmbg'=>$jmbg,'dr_id'=>$dr_id,'id'=>$id]);
             return true;
