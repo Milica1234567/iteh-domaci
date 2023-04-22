@@ -2,10 +2,11 @@
     require_once 'db.php';
     $db = new Database();
 
+    session_start();
 
     if(isset($_POST['action']) && $_POST['action'] == "view"){
         $output = '';
-        $data = $db->read();
+        $data = $db->read($_SESSION['id_dr']);
         
         if($db->totalRowCount()>0){
             $output .= '<table class="table table-striped table-sm table-bordered">

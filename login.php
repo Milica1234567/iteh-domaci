@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prijava</title>
-    <link rel="stylesheet" href="style.css">
+  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    
+      <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -37,7 +37,7 @@
 <div class="container">
     <div class="login-box">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 login">
             <h2>LOGIN</h2>
             <form action="validation.php" method="post">
                 <div class="form-group">

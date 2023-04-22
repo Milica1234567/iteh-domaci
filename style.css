@@ -1,3 +1,16 @@
 body {
-  background: blue;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(img/post2.jpg);
+  background-size: cover;
+}
+
+.logo {
+  width: 150px;
+}
+
+.title {
+  color: aqua;
+}
+
+.logout {
+  color: white;
 }/*# sourceMappingURL=style.css.map */

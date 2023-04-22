@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kartoteka</title>
-    <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -27,7 +31,7 @@
             <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="ena.php">dr Jelena Todic</a>
+            <a class="nav-link" href="login.php">dr Jelena Todic</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">dr Jovana Radenovic</a>
@@ -45,11 +49,11 @@
 
     <div class="row subtitle">
         <div class="col-lg-6 subtitle">
-            <h4 class=>Pacijenti doktorke Jelene Todic</h4>
+            <h4 class=>Pacijenti doktorke: <?php echo $_SESSION['ime_doktora']; ?></h4>
         </div>
         <div class="col-lg-6 btns">
             <button type="button" class="btn btn-primary m-1 float-right" data-toggle="modal" data-target="#addPatient"><i class="fas fa-user-plus"></i> Dodaj novog pacijenta</button>
-            
+            <a class="logout" href="logout.php">LOGOUT</a>
         </div>
     </div>
     <hr class="my-1">

@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kartoteka</title>
-    <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
@@ -28,7 +29,7 @@
             <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="ena.php">dr Jelena Todic</a>
+            <a class="nav-link" href="login.php">dr Jelena Todic</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">dr Jovana Radenovic</a>
